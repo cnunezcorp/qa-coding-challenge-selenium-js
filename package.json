@@ -1,0 +1,30 @@
+{
+  "name": "qa-coding-challenge-selenium-js",
+  "version": "1.0.0",
+  "description": "QA Coding Challenge - Selenium JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "clean:allure": "node -e \"const fs = require('fs'); const path = require('path'); const dir = path.join(process.cwd(), 'allure-results'); if (fs.existsSync(dir)) { fs.readdirSync(dir).forEach(f => fs.unlinkSync(path.join(dir, f))); console.log('allure-results limpiado'); }\"",
+    "clean:report": "node -e \"const fs = require('fs'); const path = require('path'); const dir = path.join(process.cwd(), 'allure-report'); if (fs.existsSync(dir)) { fs.rmSync(dir, { recursive: true, force: true }); console.log('allure-report eliminado'); }\"",
+    "clean": "npm run clean:allure && npm run clean:report",
+    "test": "npm run clean:allure && cucumber-js src/test/resources/features --require src/test/js/stepDefinitions --tags @Regression",
+    "test:all": "npm run clean:allure && cucumber-js src/test/resources/features --require src/test/js/stepDefinitions",
+    "test:regression": "npm run clean:allure && cucumber-js src/test/resources/features --require src/test/js/stepDefinitions --tags @Regression",
+    "test:tinymce": "npm run clean:allure && cucumber-js src/test/resources/features --require src/test/js/stepDefinitions --tags @TinyMCE",
+    "test:nested": "npm run clean:allure && cucumber-js src/test/resources/features --require src/test/js/stepDefinitions --tags @NestedFrames",
+    "test:windows": "npm run clean:allure && cucumber-js src/test/resources/features --require src/test/js/stepDefinitions --tags @Windows",
+    "allure:generate": "allure generate allure-results --clean -o allure-report",
+    "allure:open": "npm run allure:generate && allure open allure-report",
+    "allure:clean": "npm run clean"
+  },
+  "keywords": ["selenium", "cucumber", "javascript", "automation"],
+  "author": "Cristofer Nuñez",
+  "license": "ISC",
+  "dependencies": {
+    "selenium-webdriver": "^4.35.0",
+    "@cucumber/cucumber": "^10.3.1",
+    "allure-js-commons": "^3.0.0",
+    "uuid": "^9.0.1"
+  }
+}
+
