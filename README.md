@@ -30,7 +30,7 @@ instalar todas las dependencias necesarias.
 ## Ejecución de Pruebas
 Todos los scripts se encuentran en el ```package.json```
 
-### Ejecuta todas las pruebas, debido a que, tienen el
+El siguiente comando ejecuta todas las pruebas, debido a que, tienen el
 tag @Regression y limpia resultados previos
 ```bash
 npm test
